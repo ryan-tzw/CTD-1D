@@ -3,6 +3,7 @@ from functools import partial
 from classes.helpers.vector import Vector
 
 
+# !! TODO: I just realised that with the current method I can't keep track of the object's x and y coordinates... so I have to redo this movement system again :((
 # TODO: split current InputManager into PlayerMovementController
 class InputManager:
     """Class that manages inputs (wow)"""
@@ -18,6 +19,8 @@ class InputManager:
             "s": False,
             "d": False,
         }
+
+        self.setup_keys()
 
     def move(self):
         """Moves the Player around with appropriate rotation"""
@@ -103,3 +106,7 @@ class InputManager:
         self.screen.onkeyrelease(partial(self.release_key, "a"), "a")
         self.screen.onkeyrelease(partial(self.release_key, "s"), "s")
         self.screen.onkeyrelease(partial(self.release_key, "d"), "d")
+
+
+if __name__ == "__main__":
+    print("Run the code from the main.py file tyvm")

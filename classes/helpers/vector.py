@@ -5,7 +5,7 @@ import math
 class Vector:
     """Helper class for defining vectors"""
 
-    def __init__(self, x, y) -> None:
+    def __init__(self, x: float, y: float) -> None:
         self.x = x
         self.y = y
 
@@ -18,7 +18,7 @@ class Vector:
         self.x += other.x
         self.y += other.y
 
-    def subtract(self, other):
+    def subtract(self, other: "Vector"):
         """Subtracts other vector from current vector
 
         Args:
@@ -27,7 +27,7 @@ class Vector:
         self.x -= other.x
         self.y -= other.y
 
-    def multiply(self, scalar):
+    def multiply(self, scalar: float):
         """Multiplies current vector by some factor
 
         Args:
@@ -58,3 +58,7 @@ class Vector:
             float: angle that the vector forms with the x-axis
         """
         return math.degrees(math.atan2(self.y, self.x))
+
+
+if __name__ == "__main__":
+    print("Run the code from the main.py file tyvm")
