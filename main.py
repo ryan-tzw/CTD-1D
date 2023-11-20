@@ -1,63 +1,20 @@
 from turtle import Turtle, Screen
+from classes.managers.input_manager import InputManager
 
-speed = 0
-direction = 0
-
-
-def move_right():
-    player.setheading(0)
-    start_move()
-
-
-def move_up():
-    player.setheading(90)
-    start_move()
-
-
-def move_left():
-    player.setheading(180)
-    start_move()
-
-
-def move_down():
-    player.setheading(270)
-    start_move()
-
-
-def start_move():
-    global speed
-    speed = 10
-
-
-def end_move():
-    global speed
-    speed = 0
-
-
-def move():
-    player.forward(speed)
-
-
+# Initial setup
 player = Turtle()
 screen = Screen()
 
-screen.title("Test")
+screen.title("Wow game")
 screen.tracer(0)
 player.penup()
 
-screen.onkeypress(move_right, "d")
-screen.onkeypress(move_up, "w")
-screen.onkeypress(move_left, "a")
-screen.onkeypress(move_down, "s")
-
-screen.onkeyrelease(end_move, "d")
-screen.onkeyrelease(end_move, "w")
-screen.onkeyrelease(end_move, "a")
-screen.onkeyrelease(end_move, "s")
+input_manager = InputManager(player, screen)
+input_manager.setup_keys()
 
 
 def game_loop():
-    move()
+    input_manager.move()
     screen.update()
     screen.ontimer(game_loop, 50)
 
