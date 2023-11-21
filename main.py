@@ -1,6 +1,9 @@
 """Required modules"""
 from turtle import Turtle, Screen
-from classes.managers.input_manager import InputManager
+from core.player.player_controller import PlayerController
+from core.player.player import Player
+from managers.game_manager import GameManager
+from managers.input_manager import InputManager
 
 
 def main():
@@ -8,8 +11,10 @@ def main():
     screen_width = 800
     screen_height = 600
 
+    game_manager = GameManager()
+
     # Initialise the Player and Screen
-    player = Turtle()
+    pen = Turtle()
     screen = Screen()
 
     # Screen setup
@@ -17,16 +22,34 @@ def main():
     screen.title("Wow game")
     screen.tracer(0)
 
-    # Player setup
-    player.penup()
-    player.shape("turtle")
-    player.color("green")
+    # Pen setup
+    pen.speed(0)
+    pen.penup()
+    pen.hideturtle()
 
-    # Instantiate the InputManager
-    input_manager = InputManager(player, screen)
+    # Pass the turtle screen into the InputManager
+    input_manager = InputManager()
+    input_manager.set_screen(screen)
+    input_manager.setup_keys()
+
+    player = Player(0, 0, "blue", "square")
+    game_manager.load_game_object(player)
+    player_controller = PlayerController(player)
+
+    # Player turtle setup
+    # player.penup()
+    # player.shape("turtle")
+    # player.color("green")
+    # player.hideturtle()
 
     def game_loop():
-        input_manager.move()
+        # Clear screen
+        pen.clear()
+
+        game_manager.update()
+        player_controller.update()
+        game_manager.render(pen)
+
         screen.update()
         screen.ontimer(game_loop, 20)
 
