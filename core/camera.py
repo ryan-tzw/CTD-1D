@@ -1,3 +1,4 @@
+# TODO: Make the camera follow the player
 class Camera:
     def __init__(self, x, y) -> None:
         self.x = x
