@@ -18,6 +18,7 @@ class CollisionManager:
         self._player = player
 
     def global_check(self):
+        """Checks if there are any collisions happening each frame"""
         for obstacle in self._obstacles:
             if self._collision_check(self._player, obstacle):
                 collision_direction = self._find_collision_direction(
@@ -26,13 +27,13 @@ class CollisionManager:
 
                 match collision_direction:
                     case "above":
-                        self._player.dy += 1 * self._player.move_speed
+                        self._player.dy += self._player.move_speed
                     case "below":
-                        self._player.dy -= 1 * self._player.move_speed
+                        self._player.dy -= self._player.move_speed
                     case "left":
-                        self._player.dx -= 1 * self._player.move_speed
+                        self._player.dx -= self._player.move_speed
                     case "right":
-                        self._player.dx += 1 * self._player.move_speed
+                        self._player.dx += self._player.move_speed
 
     def _collision_check(self, object1: GameObject, object2: GameObject):
         """Checks for collision using axis-aligned bounding boxes"""
@@ -48,10 +49,18 @@ class CollisionManager:
         return False
 
     def _find_collision_direction(self, object1: GameObject, object2: GameObject):
+        """Finds the direction of the collision between object 1 and object 2
+
+        Args:
+            object1 (GameObject): Colliding object
+            object2 (GameObject): Object that is being collided into
+
+        Returns:
+            str: Direction as a string
+        """
         displacement = Vector(object1.x, object1.y)
         displacement.subtract(Vector(object2.x, object2.y))
         rotation = displacement.get_rotation()
-        print(rotation)
 
         if 45 <= rotation < 135:
             return "above"
