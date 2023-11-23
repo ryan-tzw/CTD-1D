@@ -57,7 +57,10 @@ class Vector:
         Returns:
             float: angle that the vector forms with the x-axis
         """
-        return math.degrees(math.atan2(self.y, self.x))
+        angle = math.degrees(math.atan2(self.y, self.x))
+        if angle < 0:
+            angle += 360
+        return angle
 
 
 if __name__ == "__main__":

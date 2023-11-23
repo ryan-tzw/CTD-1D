@@ -15,7 +15,7 @@ class InputManager:
         return cls._instance
 
     def __init__(self) -> None:
-        self._screen: _Screen = None
+        self._screen: _Screen
         self._keys = ["w", "a", "s", "d"]
         self.pressed = []
 
@@ -30,7 +30,12 @@ class InputManager:
     def get_pressed_keys(self):
         return self.pressed
 
-    def get_joystick(self) -> tuple[float, float]:
+    def get_normalised_vector(self) -> tuple[float, float]:
+        """Returns a Vector representing the cumulative direction of the WASD keys
+
+        Returns:
+            tuple[float, float]: tuple with x and y components of the vector
+        """
         vector = Vector(0, 0)
 
         for key in self.pressed:

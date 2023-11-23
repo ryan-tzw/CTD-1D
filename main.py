@@ -1,7 +1,9 @@
 """Required modules"""
 from turtle import Turtle, Screen
+from core.generics import GameObject
 from core.player.player_controller import PlayerController
 from core.player.player import Player
+from managers.collision_manager import CollisionManager
 from managers.game_manager import GameManager
 from managers.input_manager import InputManager
 
@@ -19,7 +21,7 @@ def main():
 
     # Screen setup
     screen.setup(width=screen_width, height=screen_height)
-    screen.title("Wow game")
+    screen.title("Fablab Adventures")
     screen.tracer(0)
 
     # Pen setup
@@ -33,14 +35,16 @@ def main():
     input_manager.setup_keys()
 
     player = Player(0, 0, "blue", "square")
-    game_manager.load_game_object(player)
     player_controller = PlayerController(player)
 
-    # Player turtle setup
-    # player.penup()
-    # player.shape("turtle")
-    # player.color("green")
-    # player.hideturtle()
+    obstacle = GameObject(50, 50, "black", "square")
+    obstacle.set_dimensions(40, 40)
+
+    game_manager.load_game_object(player)
+    game_manager.load_game_object(obstacle)
+
+    collision_manager = CollisionManager(player)
+    collision_manager.load_obstacle(obstacle)
 
     def game_loop():
         # Clear screen
@@ -48,10 +52,12 @@ def main():
 
         game_manager.update()
         player_controller.update()
+        collision_manager.update()
+
         game_manager.render(pen)
 
         screen.update()
-        screen.ontimer(game_loop, 20)
+        screen.ontimer(game_loop, 10)
 
     game_loop()
 

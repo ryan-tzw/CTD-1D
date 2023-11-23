@@ -10,8 +10,11 @@ class PlayerController:
         self.player = player
         self._input_manager = InputManager()
 
-    def update(self):
+    def move(self):
         """Updates the Player's change in position every frame"""
-        x, y = self._input_manager.get_joystick()
+        x, y = self._input_manager.get_normalised_vector()
         self.player.dx = x * self.player.move_speed
         self.player.dy = y * self.player.move_speed
+
+    def update(self):
+        self.move()
