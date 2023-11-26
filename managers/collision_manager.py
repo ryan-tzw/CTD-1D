@@ -64,22 +64,32 @@ class CollisionManager:
 
         if 45 <= rotation < 135:
             return "above"
-        elif 135 <= rotation < 225:
+        if 135 <= rotation < 225:
             return "left"
-        elif 225 <= rotation < 315:
+        if 225 <= rotation < 315:
             return "below"
-        else:
-            return "right"
+        return "right"
 
     def load_obstacle(self, obstacle: GameObject):
+        """Loads a new obstacle into the game.
+
+        Args:
+            obstacle (GameObject): The obstacle to be loaded.
+        """
         self._obstacles.append(obstacle)
 
     def unload_obstacle(self, target_uuid: UUID):
+        """Unloads an obstacle from the game using its UUID.
+
+        Args:
+            target_uuid (UUID): The UUID of the obstacle to be unloaded.
+        """
         for obstacle in self._obstacles:
             if obstacle.uuid == target_uuid:
                 self._obstacles.remove(obstacle)
-                return
+                break
         logging.warning("Unable to find obstacle %s to unregister.", target_uuid)
 
     def update(self):
+        """Updates the collision manager each frame"""
         self.global_check()
