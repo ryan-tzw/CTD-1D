@@ -4,6 +4,7 @@ from uuid import UUID
 from core.generics import GameObject
 from core.player.player import Player
 from helpers.vector import Vector
+from turtle import window_height, window_width
 
 
 class CollisionManager:
@@ -93,3 +94,15 @@ class CollisionManager:
     def update(self):
         """Updates the collision manager each frame"""
         self.global_check()
+        self.boundary()
+
+    def boundary(self):
+        width, height = window_width(), window_height()
+        if self._player.x > (width / 2 - self._player.width / 2):
+            self._player.x = width / 2 - self._player.width / 2
+        if self._player.x < -(width / 2 - self._player.width / 2):
+            self._player.x = -(width / 2 - self._player.width / 2)
+        if self._player.y > (height / 2 - self._player.height / 2):
+            self._player.y = height / 2 - self._player.height / 2
+        if self._player.y < -(height / 2 - self._player.height / 2):
+            self._player.y = -(height / 2 - self._player.height / 2)
