@@ -1,10 +1,11 @@
 """Required modules"""
+# pylint: disable=no-name-in-module
 import logging
 from uuid import UUID
+from turtle import window_height, window_width
 from core.generics import GameObject
 from core.player.player import Player
 from helpers.vector import Vector
-from turtle import window_height, window_width
 
 
 class CollisionManager:
@@ -88,7 +89,7 @@ class CollisionManager:
         for obstacle in self._obstacles:
             if obstacle.uuid == target_uuid:
                 self._obstacles.remove(obstacle)
-                break
+                return
         logging.warning("Unable to find obstacle %s to unregister.", target_uuid)
 
     def update(self):

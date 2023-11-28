@@ -1,4 +1,5 @@
 """Modules required"""
+from random import randint
 from turtle import Turtle
 from uuid import uuid4
 from helpers.bounding_box import BoundingBox
@@ -54,15 +55,14 @@ class GameObject:
         self.boundingbox = BoundingBox(self.x, self.y, self.width, self.height)
 
 
-# class Obstacle(GameObject):
-#     def __init__(self, x: int, y: int, color: str, shape: str) -> None:
-#         super().__init__(x, y, color, shape)
+class Obstacle(GameObject):
+    """Obstacle that falls from the sky"""
 
-# def _calculate_boundingbox(self):
-#     bb = {
-#         "min_x": self.x - self.width / 2,
-#         "max_x": self.x + self.width / 2,
-#         "min_y": self.y - self.width / 2,
-#         "max_y": self.y + self.width / 2,
-#     }
-#     return bb
+    def __init__(self, x: int, y: int, color: str, shape: str) -> None:
+        super().__init__(x, y, color, shape)
+        self.dy = -randint(2, 7)
+
+    def update(self):
+        """Updates the object every frame"""
+        self.y += self.dy
+        self.recalculate_boundingbox()

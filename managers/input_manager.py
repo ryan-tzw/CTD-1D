@@ -28,6 +28,7 @@ class InputManager:
         self._screen = screen
 
     def get_pressed_keys(self):
+        """Returns a list of all keys currently pressed"""
         return self.pressed
 
     def get_normalised_vector(self) -> tuple[float, float]:
@@ -40,21 +41,13 @@ class InputManager:
 
         for key in self.pressed:
             match key:
-                case "w":
+                case "w" | "Up":
                     vector.add(Vector(0, 1))
-                case "a":
+                case "a" | "Left":
                     vector.add(Vector(-1, 0))
-                case "s":
+                case "s" | "Down":
                     vector.add(Vector(0, -1))
-                case "d":
-                    vector.add(Vector(1, 0))
-                case "Up":
-                    vector.add(Vector(0, 1))
-                case "Left":
-                    vector.add(Vector(-1, 0))
-                case "Down":
-                    vector.add(Vector(0, -1))
-                case "Right":
+                case "d" | "Right":
                     vector.add(Vector(1, 0))
 
         vector.normalize()

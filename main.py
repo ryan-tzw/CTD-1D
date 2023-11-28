@@ -1,11 +1,11 @@
 """Required modules"""
 from turtle import Turtle, Screen
-from core.generics import GameObject
 from core.player.player_controller import PlayerController
 from core.player.player import Player
 from managers.collision_manager import CollisionManager
 from managers.game_manager import GameManager
 from managers.input_manager import InputManager
+from managers.spawn_manager import SpawnManager
 
 
 def main():
@@ -37,14 +37,10 @@ def main():
     player = Player(0, 0, "blue", "square")
     player_controller = PlayerController(player)
 
-    obstacle = GameObject(50, 50, "black", "square")
-    obstacle.set_dimensions(40, 40)
-
     game_manager.load_game_object(player)
-    game_manager.load_game_object(obstacle)
-
     collision_manager = CollisionManager(player)
-    collision_manager.load_obstacle(obstacle)
+
+    spawn_manager = SpawnManager(game_manager, collision_manager)
 
     def game_loop():
         # Clear screen
@@ -53,6 +49,8 @@ def main():
         game_manager.update()
         player_controller.update()
         collision_manager.update()
+
+        spawn_manager.update()
 
         game_manager.render(pen)
 
@@ -65,8 +63,5 @@ def main():
     screen.mainloop()
 
 
-
 if __name__ == "__main__":
     main()
-
-
