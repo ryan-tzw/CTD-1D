@@ -25,6 +25,7 @@ class GameObject:
         self.boundingbox = BoundingBox(self.x, self.y, self.width, self.height)
 
     def set_dimensions(self, height: int = 20, width: int = 20):
+        """Sets the dimensions of the object"""
         self.height = height
         self.width = width
         self.recalculate_boundingbox()
@@ -41,6 +42,7 @@ class GameObject:
         """Generic placeholder update function"""
 
     def render(self, pen: Turtle):
+        """Renders the object on the screen"""
         pen.goto(self.x, self.y)
         pen.shape(self.shape)
         pen.shapesize(self.width / 20, self.height / 20)
@@ -48,6 +50,7 @@ class GameObject:
         pen.stamp()
 
     def recalculate_boundingbox(self):
+        """Recalculates the bounding box of the object"""
         self.boundingbox = BoundingBox(self.x, self.y, self.width, self.height)
 
 

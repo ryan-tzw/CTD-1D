@@ -16,7 +16,7 @@ class InputManager:
 
     def __init__(self) -> None:
         self._screen: _Screen
-        self._keys = ["w", "a", "s", "d"]
+        self._keys = ["w", "a", "s", "d", "Left", "Right", "Up", "Down"]
         self.pressed = []
 
     def set_screen(self, screen: _Screen):
@@ -47,6 +47,14 @@ class InputManager:
                 case "s":
                     vector.add(Vector(0, -1))
                 case "d":
+                    vector.add(Vector(1, 0))
+                case "Up":
+                    vector.add(Vector(0, 1))
+                case "Left":
+                    vector.add(Vector(-1, 0))
+                case "Down":
+                    vector.add(Vector(0, -1))
+                case "Right":
                     vector.add(Vector(1, 0))
 
         vector.normalize()
