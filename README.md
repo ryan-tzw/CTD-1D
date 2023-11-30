@@ -14,3 +14,5 @@ Players move their sprit using WASD or the arrow keys on a keyboard.
 
 ## How to run 
 Run main.py
+
+## Possible improvements/new features 
