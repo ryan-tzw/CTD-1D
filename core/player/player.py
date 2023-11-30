@@ -1,7 +1,6 @@
 """Required modules"""
 from core.generics import GameObject
 
-
 class Player(GameObject):
     """The main Player GameObject
 
