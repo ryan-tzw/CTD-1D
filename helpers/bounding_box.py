@@ -1,5 +1,6 @@
 """Bounding box class"""
 
+
 class BoundingBox:
     """Stores information about the bounding box"""
 

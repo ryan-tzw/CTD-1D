@@ -1,5 +1,7 @@
 """Modules required"""
 import math
+
+
 class Vector:
     """Helper class for defining vectors"""
 

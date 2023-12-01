@@ -4,6 +4,7 @@ from turtle import Turtle
 from uuid import uuid4
 from helpers.bounding_box import BoundingBox
 
+
 class GameObject:
     """Generic GameObject (can be literally anything)"""
 

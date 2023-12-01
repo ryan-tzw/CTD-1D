@@ -3,6 +3,7 @@ from functools import partial
 from turtle import _Screen
 from helpers.vector import Vector
 
+
 class InputManager:
     """Class that manages inputs (wow)"""
 

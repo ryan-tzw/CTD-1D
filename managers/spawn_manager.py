@@ -6,6 +6,7 @@ from core.generics import Obstacle
 from managers.collision_manager import CollisionManager
 from managers.game_manager import GameManager
 
+
 class SpawnManager:
     """Spawns falling obstacles"""
 

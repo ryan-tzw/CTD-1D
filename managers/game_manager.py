@@ -3,6 +3,7 @@ import logging
 from uuid import UUID
 from core.generics import GameObject
 
+
 class GameManager:
     """Manages the updating & rendering of all game objects"""
 

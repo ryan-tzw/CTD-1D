@@ -98,6 +98,7 @@ class CollisionManager:
         self.boundary()
 
     def boundary(self):
+        """Keeps the player within the boundary of the screen"""
         width, height = window_width(), window_height()
         if self._player.x > (width / 2 - self._player.width / 2):
             self._player.x = width / 2 - self._player.width / 2

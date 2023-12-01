@@ -2,6 +2,7 @@
 from managers.input_manager import InputManager
 from core.player.player import Player
 
+
 class PlayerController:
     """Separated logic for controlling the Player"""
 
