@@ -11,6 +11,10 @@ Libraries used:
 ## Target audience
 This game is aimed at Term 1 SUTD students who may not have internalised the Fab Lab safety rules. This is meant to remind students to adhere to the FabLab safety rules in a fun way where students are inclined to play the game when they are bored, have small pockets of time, or find their minds needing some stimulation to stay awake on long school days. A game that is straightforward and easy to play would help the students internalise some of the FabLab’s safety rules.
 
+## How to run
+Open main.py
+Run main.py
+
 ## Fablab Adventure Features 
 
 ###### Movement
