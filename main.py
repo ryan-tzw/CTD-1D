@@ -1,4 +1,4 @@
-"""Required modules"""
+"""Main entrypoint for the game"""
 from turtle import Turtle, Screen
 from core.player.player_controller import PlayerController
 from core.player.player import Player
@@ -6,6 +6,8 @@ from managers.collision_manager import CollisionManager
 from managers.game_manager import GameManager
 from managers.input_manager import InputManager
 from managers.spawn_manager import SpawnManager
+from managers.ui_manager import UIManager
+from helpers import delta_time, game_state
 
 
 def main():
@@ -41,8 +43,13 @@ def main():
     collision_manager = CollisionManager(player)
 
     spawn_manager = SpawnManager(game_manager, collision_manager)
+    ui_manager = UIManager()
+    ui_manager.initialise_ui()
 
     def game_loop():
+        delta_time.set_start_time()
+        delta_time.update_delta_time()
+
         # Clear screen
         pen.clear()
 
@@ -51,11 +58,17 @@ def main():
         collision_manager.update()
 
         spawn_manager.update()
+        ui_manager.update()
 
         game_manager.render(pen)
+        ui_manager.render(pen)
 
         screen.update()
-        screen.ontimer(game_loop, 10)
+
+        if game_state.game_over is False:
+            screen.ontimer(game_loop, 10)
+
+        delta_time.set_end_time()
 
     game_loop()
 

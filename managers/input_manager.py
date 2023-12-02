@@ -27,10 +27,6 @@ class InputManager:
         """
         self._screen = screen
 
-    def get_pressed_keys(self):
-        """Returns a list of all keys currently pressed"""
-        return self.pressed
-
     def get_normalised_vector(self) -> tuple[float, float]:
         """Returns a Vector representing the cumulative direction of the WASD keys
 
