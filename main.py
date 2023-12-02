@@ -57,9 +57,11 @@ def main():
     ui_manager.initialise_ui()
 
     def game_loop():
-        match game_state.game_state:
+        match game_state.get_game_state():
             case "home_screen":
-                pass
+                # Temporary while we don't have a home screen
+                game_state.set_game_state("playing")
+                screen.ontimer(game_loop, 10)
 
             case "playing":
                 delta_time.set_start_time()

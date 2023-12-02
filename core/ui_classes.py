@@ -77,4 +77,4 @@ class RestartButton(UIElement):
             self.x - self.width / 2 < cursor_x < self.x + self.width / 2
             and self.y - self.height / 2 < cursor_y < self.y + self.height / 2
         ):
-            print("Restarting game...")
+            print("Restart not implemented yet.")

@@ -1,12 +1,17 @@
 # pylint: disable=global-statement
-game_state: str = "home_screen"
+__game_state: str = "home_screen"
 
 
 def set_game_state(state: str):
     """Sets the game state to the home screen"""
-    global game_state
+    global __game_state
     possible_states = ["home_screen", "playing", "game_over"]
     if state in possible_states:
-        game_state = state
+        __game_state = state
     else:
         raise ValueError("Invalid game state.")
+
+
+def get_game_state() -> str:
+    """Returns the current game state"""
+    return __game_state
