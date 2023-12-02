@@ -113,4 +113,4 @@ class CollisionManager:
     def end_game(self):
         """Ends the game"""
         print("YOU LOSE")
-        game_state.game_over = True
+        game_state.set_game_state("game_over")

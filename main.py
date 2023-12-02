@@ -57,30 +57,34 @@ def main():
     ui_manager.initialise_ui()
 
     def game_loop():
-        delta_time.set_start_time()
-        delta_time.update_delta_time()
+        match game_state.game_state:
+            case "home_screen":
+                pass
 
-        # Clear screen
-        pen.clear()
+            case "playing":
+                delta_time.set_start_time()
+                delta_time.update_delta_time()
 
-        game_manager.update()
-        player_controller.update()
-        collision_manager.update()
+                # Clear screen
+                pen.clear()
 
-        spawn_manager.update()
-        ui_manager.update()
+                game_manager.update()
+                player_controller.update()
+                collision_manager.update()
 
-        game_manager.render(pen)
-        ui_manager.render(pen)
+                spawn_manager.update()
+                ui_manager.update()
 
-        screen.update()
+                game_manager.render(pen)
+                ui_manager.render(pen)
 
-        delta_time.set_end_time()
+                screen.update()
 
-        if game_state.game_over is False:
-            screen.ontimer(game_loop, 10)
-        else:
-            ui_manager.game_over(pen)
+                delta_time.set_end_time()
+                screen.ontimer(game_loop, 10)
+
+            case "game_over":
+                ui_manager.game_over(pen)
 
     game_loop()
 
