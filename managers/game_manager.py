@@ -26,7 +26,6 @@ class GameManager:
         """
         try:
             self._game_objects.remove(game_object)
-            return
         except ValueError:
             logging.warning("Unable to find GameObject to unload.")
 
@@ -39,3 +38,7 @@ class GameManager:
         """Renders all GameObjects that have been loaded"""
         for game_object in self._game_objects:
             game_object.render(pen)
+
+    def reset(self):
+        """Resets the game manager"""
+        self._game_objects.clear()

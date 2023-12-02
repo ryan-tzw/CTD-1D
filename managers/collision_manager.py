@@ -24,6 +24,10 @@ class CollisionManager:
         for obstacle in self._obstacles:
             if self._collision_check(self._player, obstacle):
                 self.end_game()
+
+                # Old collision code that pushes player away from object
+                # (In case we need it again)
+
                 # collision_direction = self._find_collision_direction(
                 #     self._player, obstacle
                 # )
@@ -89,7 +93,6 @@ class CollisionManager:
         """
         try:
             self._obstacles.remove(obstacle)
-            return
         except ValueError:
             logging.warning("Unable to find obstacle to unload.")
 
@@ -114,3 +117,7 @@ class CollisionManager:
         """Ends the game"""
         print("YOU LOSE")
         game_state.set_game_state("game_over")
+
+    def reset(self):
+        """Resets the collision manager"""
+        self._obstacles.clear()

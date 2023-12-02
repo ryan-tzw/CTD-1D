@@ -5,7 +5,7 @@ from turtle import window_height, window_width
 from core.generics import Obstacle
 from managers.collision_manager import CollisionManager
 from managers.game_manager import GameManager
-from helpers import score
+from helpers import score, difficulty
 
 
 class SpawnManager:
@@ -17,7 +17,7 @@ class SpawnManager:
         self._game_manager = game_manager
         self._collision_manager = collision_manager
         self._obstacles: list[Obstacle] = []
-        self.countdown = 0
+        self.countdown = 75
 
     def update(self):
         """Updates the spawn manager every frame"""
@@ -29,8 +29,8 @@ class SpawnManager:
             # Spawn a random number of obstacles
             for _ in range(randint(1, 5)):
                 self.spawn_obstacle()
-            # Random countdown between 50 and 100
-            self.countdown = randint(20, 40)
+
+            self.countdown = randint(20, 40) / difficulty.get_global_speed_modifier()
 
         # Check if any obstacles have gone off the screen and remove them
         for obstacle in self._obstacles:
@@ -46,13 +46,9 @@ class SpawnManager:
             window_height() / 2 + 20,
             "red",
         )
-        # Add to obstacle list
+
         self._obstacles.append(obstacle)
-
-        # Load into collision manager
         self._collision_manager.load_obstacle(obstacle)
-
-        # Load into game manager
         self._game_manager.load_game_object(obstacle)
 
     def unload_obstacle(self, target_obstacle: Obstacle):
@@ -61,11 +57,14 @@ class SpawnManager:
         Args:
             target_obstacle (Obstacle): Obstacle to unload
         """
-        # Remove from obstacle list
         self._obstacles.remove(target_obstacle)
-
-        # Unload from collision manager
         self._collision_manager.unload_obstacle(target_obstacle)
-
-        # Unload from game manager
         self._game_manager.unload_game_object(target_obstacle)
+
+    def reset(self):
+        """Resets the spawn manager"""
+        # Unload all obstacles
+        for obstacle in self._obstacles:
+            self.unload_obstacle(obstacle)
+        # Reset countdown
+        self.countdown = 75
