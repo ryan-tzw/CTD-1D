@@ -8,7 +8,8 @@ start_time = 0
 
 def update_delta_time():
     global delta_time
-    delta_time = (start_time - end_time) * 100
+    speed_modifier = 100
+    delta_time = (start_time - end_time) * speed_modifier
 
 
 def set_start_time():

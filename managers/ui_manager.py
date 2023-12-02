@@ -1,33 +1,16 @@
 """Manages the UI of the game"""
 # pylint: disable=no-name-in-module
 import logging
-from turtle import Turtle, window_height, window_width
-from helpers import score
-
-
-class UIElement:
-    """Base class for all UI elements"""
-
-    def __init__(self, x: int, y: int, text: str, alignment: str) -> None:
-        self.x = x
-        self.y = y
-        self.text = text
-        self.alignment = alignment
-
-    def update(self):
-        self.text = "Score: " + str(score.score)
-
-    def render(self, pen: Turtle) -> None:
-        """Renders the UIElement"""
-        pen.goto(self.x, self.y)
-        pen.write(self.text, align=self.alignment, font=("Courier", 24, "normal"))
+from turtle import Turtle, window_height, window_width, _Screen
+from core.ui_classes import RestartButton, UIElement, ScoreUI
 
 
 class UIManager:
     """Manages the UI of the game"""
 
-    def __init__(self) -> None:
+    def __init__(self, screen: _Screen) -> None:
         self._ui_elements: list[UIElement] = []
+        self.screen = screen
 
     def load_ui_element(self, ui_element: UIElement):
         """Adds a UIElement to the list of UIElements to be rendered
@@ -50,6 +33,7 @@ class UIManager:
         )
 
     def update(self):
+        """Updates all UIElements that have been loaded"""
         for ui_element in self._ui_elements:
             ui_element.update()
 
@@ -60,8 +44,22 @@ class UIManager:
 
     def initialise_ui(self) -> None:
         """Initialises the UI"""
-        score_text = "Score: " + str(score.score)
-        score_ui = UIElement(
-            -window_width() / 2 + 50, window_height() / 2 - 50, score_text, "left"
+        score_ui = ScoreUI(
+            -window_width() / 2 + 20, window_height() / 2 - 50, "Score: 0", "left"
         )
         self.load_ui_element(score_ui)
+
+    def game_over(self, pen: Turtle) -> None:
+        """Renders the game over screen"""
+        self._ui_elements = []
+
+        game_over_ui = UIElement(0, 0, "Game Over", "center")
+        score_ui = ScoreUI(0, -50, "Score: 0", "center")
+        restart_button = RestartButton(self.screen)
+
+        self.load_ui_element(game_over_ui)
+        self.load_ui_element(score_ui)
+        self.load_ui_element(restart_button)
+
+        self.update()
+        self.render(pen)

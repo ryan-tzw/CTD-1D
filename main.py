@@ -1,5 +1,6 @@
 """Main entrypoint for the game"""
-from turtle import Turtle, Screen
+# pylint: disable=no-name-in-module
+from turtle import Turtle, Screen, register_shape
 from core.player.player_controller import PlayerController
 from core.player.player import Player
 from managers.collision_manager import CollisionManager
@@ -10,10 +11,19 @@ from managers.ui_manager import UIManager
 from helpers import delta_time, game_state
 
 
+def register_shapes():
+    """Registers all shapes required for the game"""
+    register_shape(
+        "img/bulbasaur.gif",
+    )
+
+
 def main():
     """Run the code from this file"""
     screen_width = 800
     screen_height = 600
+
+    register_shapes()
 
     game_manager = GameManager()
 
@@ -43,7 +53,7 @@ def main():
     collision_manager = CollisionManager(player)
 
     spawn_manager = SpawnManager(game_manager, collision_manager)
-    ui_manager = UIManager()
+    ui_manager = UIManager(screen)
     ui_manager.initialise_ui()
 
     def game_loop():
@@ -65,10 +75,12 @@ def main():
 
         screen.update()
 
+        delta_time.set_end_time()
+
         if game_state.game_over is False:
             screen.ontimer(game_loop, 10)
-
-        delta_time.set_end_time()
+        else:
+            ui_manager.game_over(pen)
 
     game_loop()
 

@@ -59,7 +59,9 @@ class GameObject:
 class Obstacle(GameObject):
     """Obstacle that falls from the sky"""
 
-    def __init__(self, x: int, y: int, color: str, shape: str) -> None:
+    def __init__(
+        self, x: int, y: int, color: str, shape: str = "img/bulbasaur.gif"
+    ) -> None:
         super().__init__(x, y, color, shape)
         self.dy = -randint(2, 7)
         self.height = randint(20, 50)

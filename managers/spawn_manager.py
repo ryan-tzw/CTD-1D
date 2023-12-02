@@ -45,7 +45,6 @@ class SpawnManager:
             randint(-window_width() / 2, window_width() / 2),
             window_height() / 2 + 20,
             "red",
-            "circle",
         )
         # Add to obstacle list
         self._obstacles.append(obstacle)
