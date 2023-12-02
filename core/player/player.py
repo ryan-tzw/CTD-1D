@@ -1,5 +1,6 @@
 """Required modules"""
 from core.generics import GameObject
+from helpers import delta_time
 
 
 class Player(GameObject):
@@ -20,6 +21,6 @@ class Player(GameObject):
 
     def update(self):
         """Updates the Entity's position every frame"""
-        self.x += self.dx
-        self.y += self.dy
+        self.x += self.dx * delta_time.delta_time
+        self.y += self.dy * delta_time.delta_time
         self.recalculate_boundingbox()

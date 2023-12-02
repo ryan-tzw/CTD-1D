@@ -1,6 +1,5 @@
 """Required modules"""
 import logging
-from uuid import UUID
 from core.generics import GameObject
 
 
@@ -19,18 +18,17 @@ class GameManager:
         self._game_objects.append(game_object)
         self._game_objects.sort(key=lambda obj: obj.render_priority)
 
-    def unload_game_object(self, target_uuid: UUID):
+    def unload_game_object(self, game_object: GameObject):
         """Removes a GameObject from the list of loaded GameObjects
 
         Args:
             target_uuid (_type_): UUID of the GameObject to remove
         """
-        for game_object in self._game_objects:
-            if game_object.uuid == target_uuid:
-                self._game_objects.remove(game_object)
-                return
-
-        logging.warning("Unable to find GameObject of UUID %s to unload.", target_uuid)
+        try:
+            self._game_objects.remove(game_object)
+            return
+        except ValueError:
+            logging.warning("Unable to find GameObject to unload.")
 
     def update(self):
         """Updates all GameObjects that have been loaded"""

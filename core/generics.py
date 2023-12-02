@@ -3,6 +3,7 @@ from random import randint
 from turtle import Turtle
 from uuid import uuid4
 from helpers.bounding_box import BoundingBox
+from helpers import delta_time
 
 
 class GameObject:
@@ -61,8 +62,10 @@ class Obstacle(GameObject):
     def __init__(self, x: int, y: int, color: str, shape: str) -> None:
         super().__init__(x, y, color, shape)
         self.dy = -randint(2, 7)
+        self.height = randint(20, 50)
+        self.width = self.height
 
     def update(self):
         """Updates the object every frame"""
-        self.y += self.dy
+        self.y += self.dy * delta_time.delta_time
         self.recalculate_boundingbox()

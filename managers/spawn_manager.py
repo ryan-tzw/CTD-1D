@@ -5,6 +5,7 @@ from turtle import window_height, window_width
 from core.generics import Obstacle
 from managers.collision_manager import CollisionManager
 from managers.game_manager import GameManager
+from helpers import score
 
 
 class SpawnManager:
@@ -15,7 +16,7 @@ class SpawnManager:
     ) -> None:
         self._game_manager = game_manager
         self._collision_manager = collision_manager
-        self._obstacles = []
+        self._obstacles: list[Obstacle] = []
         self.countdown = 0
 
     def update(self):
@@ -29,12 +30,13 @@ class SpawnManager:
             for _ in range(randint(1, 5)):
                 self.spawn_obstacle()
             # Random countdown between 50 and 100
-            self.countdown = randint(25, 50)
+            self.countdown = randint(20, 40)
 
         # Check if any obstacles have gone off the screen and remove them
         for obstacle in self._obstacles:
-            if obstacle.y < -window_height() / 2 - 20:
+            if obstacle.y < -window_height() / 2 - obstacle.height:
                 self.unload_obstacle(obstacle)
+                score.add_score()
 
     def spawn_obstacle(self):
         """Spawns a new obstacle"""
@@ -64,7 +66,7 @@ class SpawnManager:
         self._obstacles.remove(target_obstacle)
 
         # Unload from collision manager
-        self._collision_manager.unload_obstacle(target_obstacle.uuid)
+        self._collision_manager.unload_obstacle(target_obstacle)
 
         # Unload from game manager
-        self._game_manager.unload_game_object(target_obstacle.uuid)
+        self._game_manager.unload_game_object(target_obstacle)
