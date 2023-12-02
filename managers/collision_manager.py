@@ -1,6 +1,7 @@
 """This module contains the CollisionManager class."""
 # pylint: disable=no-name-in-module
 import logging
+import winsound
 from turtle import window_height, window_width
 from core.generics import GameObject
 from core.player.player import Player
@@ -116,6 +117,7 @@ class CollisionManager:
     def end_game(self):
         """Ends the game"""
         print("YOU LOSE")
+        winsound.PlaySound("audio/end.wav", winsound.SND_FILENAME | winsound.SND_ASYNC)
         game_state.set_game_state("game_over")
 
     def reset(self):

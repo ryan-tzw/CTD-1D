@@ -9,7 +9,7 @@ from managers.game_manager import GameManager
 from managers.input_manager import InputManager
 from managers.spawn_manager import SpawnManager
 from managers.ui_manager import UIManager
-from helpers import delta_time, game_state, score
+from helpers import delta_time, game_state, score, difficulty
 
 
 def register_shapes():
@@ -71,6 +71,7 @@ def main():
 
             case "starting":
                 screen.bgpic("nopic")
+                difficulty.reset()
                 player.reset_position()
                 score.reset_score()
                 spawn_manager.reset()

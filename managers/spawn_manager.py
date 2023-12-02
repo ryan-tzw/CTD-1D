@@ -30,7 +30,7 @@ class SpawnManager:
             for _ in range(randint(1, 5)):
                 self.spawn_obstacle()
 
-            self.countdown = randint(20, 40) / difficulty.get_global_speed_modifier()
+            self.countdown = randint(30, 40) / difficulty.get_global_speed_modifier()
 
         # Check if any obstacles have gone off the screen and remove them
         for obstacle in self._obstacles:
