@@ -1,3 +1,4 @@
+"""Delta time module. Used to calculate the time between frames"""
 # pylint: disable=global-statement
 import time
 

@@ -1,4 +1,4 @@
-"""Required modules"""
+"""Manages the updating & rendering of all game objects"""
 import logging
 from core.generics import GameObject
 

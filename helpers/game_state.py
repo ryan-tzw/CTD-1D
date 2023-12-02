@@ -1,3 +1,4 @@
+"""This module contains the game state variable and functions to set and get it."""
 # pylint: disable=global-statement
 __game_state: str = "home_screen"
 

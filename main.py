@@ -60,8 +60,8 @@ def main():
         match game_state.get_game_state():
             case "home_screen":
                 # Temporary while we don't have a home screen
+                # TODO: Create a home screen
                 game_state.set_game_state("playing")
-                screen.ontimer(game_loop, 10)
 
             case "playing":
                 delta_time.set_start_time()
@@ -83,10 +83,11 @@ def main():
                 screen.update()
 
                 delta_time.set_end_time()
-                screen.ontimer(game_loop, 10)
 
             case "game_over":
                 ui_manager.game_over(pen)
+
+        screen.ontimer(game_loop, 10)
 
     game_loop()
 

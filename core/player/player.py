@@ -1,4 +1,4 @@
-"""Required modules"""
+"""A module containing the Player class"""
 from core.generics import GameObject
 from helpers import delta_time
 

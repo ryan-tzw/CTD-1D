@@ -1,4 +1,4 @@
-"""Required modules"""
+"""A module containing the PlayerController class"""
 from managers.input_manager import InputManager
 from core.player.player import Player
 

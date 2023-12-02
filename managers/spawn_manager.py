@@ -1,4 +1,4 @@
-"""Modules required"""
+"""A module containing the SpawnManager class"""
 # pylint: disable=no-name-in-module
 from random import randint
 from turtle import window_height, window_width

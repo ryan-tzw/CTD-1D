@@ -1,4 +1,4 @@
-"""Modules required"""
+"""Helper class for defining vectors"""
 import math
 
 

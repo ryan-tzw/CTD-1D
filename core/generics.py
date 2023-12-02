@@ -1,4 +1,4 @@
-"""Modules required"""
+"""A module containing the GameObject class"""
 from random import randint
 from turtle import Turtle
 from uuid import uuid4

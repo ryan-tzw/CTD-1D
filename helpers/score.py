@@ -1,3 +1,4 @@
+"""Score module. Used to keep track of the player's score"""
 # pylint: disable=global-statement
 score = 0
 

@@ -1,4 +1,4 @@
-"""Required modules"""
+"""This module contains the CollisionManager class."""
 # pylint: disable=no-name-in-module
 import logging
 from turtle import window_height, window_width

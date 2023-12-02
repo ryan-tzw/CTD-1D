@@ -1,4 +1,4 @@
-"""Modules required"""
+"""A module containing the InputManager class"""
 from functools import partial
 from turtle import _Screen
 from helpers.vector import Vector
