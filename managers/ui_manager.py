@@ -30,10 +30,10 @@ class UIManager:
         self._ui_elements.append(ui_element)
 
     def unload_ui_element(self, ui_element: UIElement):
-        """Removes a UIElement from the list of loaded UIElements
+        """Removes a UIElement from the list of UIElements to be rendered
 
         Args:
-            target_uuid (_type_): UUID of the UIElement to remove
+            ui_element (UIElement): UIElement to be removed
         """
         try:
             if isinstance(ui_element, Button):
