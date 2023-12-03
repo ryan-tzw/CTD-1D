@@ -73,4 +73,4 @@ class Obstacle(GameObject):
     def set_shape(self):
         """Sets the shape of the object"""
         index = (self.width - 20) // 3 + 1
-        self.shape = f"img/fablab_staff/face{index}.gif"
+        self.shape = f"img/fablab_staff/face_{index}.gif"
