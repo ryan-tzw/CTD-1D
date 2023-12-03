@@ -1,5 +1,6 @@
 """A module containing the GameObject class"""
-from random import randint, uniform
+import logging
+from random import randint, uniform, choice
 from turtle import Turtle
 from uuid import uuid4
 from helpers.bounding_box import BoundingBox
@@ -62,10 +63,15 @@ class Obstacle(GameObject):
     def __init__(self, x: int, y: int, color: str, shape: str = "circle") -> None:
         super().__init__(x, y, color, shape)
         self.dy = -1 * uniform(1.0, 2.0) * difficulty.get_global_speed_modifier()
-        self.height = randint(20, 50)
-        self.width = self.height
+        self.width = choice(range(20, 51, 3))
+        self.set_shape()
 
     def update(self):
         """Updates the object every frame"""
         self.y += self.dy * delta_time.get_delta_time()
         self.recalculate_boundingbox()
+
+    def set_shape(self):
+        """Sets the shape of the object"""
+        index = (self.width - 20) // 3 + 1
+        self.shape = f"img/fablab_staff/face{index}.gif"

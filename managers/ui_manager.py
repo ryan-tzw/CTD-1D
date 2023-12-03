@@ -1,6 +1,7 @@
 """Manages the UI of the game"""
 # pylint: disable=no-name-in-module
 import logging
+from random import randint
 from turtle import Turtle, window_height, window_width, _Screen
 from core.ui_classes import (
     Button,
@@ -89,6 +90,9 @@ class UIManager:
             "left",
         )
         self.load_ui_element(score_ui)
+
+        # random_screen = randint(1, 5)
+        # self.screen.bgpic(f"img/screens/gameplay_bg/{random_screen}.gif")
 
     def load_game_over(self, pen: Turtle) -> None:
         """Renders the game over screen"""

@@ -27,7 +27,7 @@ class SpawnManager:
         # If the countdown reaches 0, spawn a new obstacle
         if self.countdown <= 0:
             # Spawn a random number of obstacles
-            for _ in range(randint(1, 3)):
+            for _ in range(randint(1, 4)):
                 self.spawn_obstacle()
 
             self.countdown = randint(30, 50) / difficulty.get_global_speed_modifier()
