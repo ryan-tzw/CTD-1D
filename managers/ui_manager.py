@@ -86,7 +86,7 @@ class UIManager:
             -window_width() / 2 + 20,
             window_height() / 2 - 50,
             "Score: 0",
-            "black",
+            "white",
             "left",
         )
         self.load_ui_element(score_ui)

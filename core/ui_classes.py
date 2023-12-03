@@ -32,7 +32,7 @@ class ScoreUI(UIElement):
         x: int = 0,
         y: int = 0,
         text: str = "Placeholder",
-        text_color: str = "white",
+        text_color: str = "black",
         alignment: str = "left",
         font_size: int = 24,
         font_type: str = "normal",
