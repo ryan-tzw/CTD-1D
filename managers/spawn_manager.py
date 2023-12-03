@@ -57,14 +57,14 @@ class SpawnManager:
         Args:
             target_obstacle (Obstacle): Obstacle to unload
         """
-        self._obstacles.remove(target_obstacle)
         self._collision_manager.unload_obstacle(target_obstacle)
         self._game_manager.unload_game_object(target_obstacle)
+        self._obstacles.remove(target_obstacle)
 
     def reset(self):
-        """Resets the spawn manager"""
+        """Removes all obstacles from the game and resets the countdown"""
         # Unload all obstacles
-        for obstacle in self._obstacles:
+        for obstacle in list(self._obstacles):
             self.unload_obstacle(obstacle)
         # Reset countdown
         self.countdown = 75
