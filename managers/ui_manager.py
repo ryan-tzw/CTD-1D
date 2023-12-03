@@ -91,8 +91,8 @@ class UIManager:
         )
         self.load_ui_element(score_ui)
 
-        # random_screen = randint(1, 5)
-        # self.screen.bgpic(f"img/screens/gameplay_bg/{random_screen}.gif")
+        random_screen = randint(1, 5)
+        self.screen.bgpic(f"img/screens/gameplay_bg/{random_screen}.gif")
 
     def load_game_over(self, pen: Turtle) -> None:
         """Renders the game over screen"""

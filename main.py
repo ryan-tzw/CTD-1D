@@ -34,6 +34,11 @@ def main():
     pen = Turtle()
     screen = Screen()
 
+    # Pen setup
+    pen.speed(0)
+    pen.penup()
+    pen.hideturtle()
+
     # Screen setup
     screen.setup(width=screen_width, height=screen_height)
     screen.title("Fablab Adventures")
@@ -41,17 +46,12 @@ def main():
     # pylint: disable=protected-access
     screen.cv._rootwindow.resizable(False, False)
 
-    # Pen setup
-    pen.speed(0)
-    pen.penup()
-    pen.hideturtle()
-
     # Pass the turtle screen into the InputManager
     input_manager = InputManager()
     input_manager.set_screen(screen)
     input_manager.setup_keys()
 
-    player = Player(0, 0, "blue", "square")
+    player = Player(0, 0, "blue", "img/player.gif")
     player_controller = PlayerController(player)
 
     game_manager.load_game_object(player)

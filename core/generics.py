@@ -1,6 +1,5 @@
 """A module containing the GameObject class"""
-import logging
-from random import randint, uniform, choice
+from random import uniform, choice
 from turtle import Turtle
 from uuid import uuid4
 from helpers.bounding_box import BoundingBox

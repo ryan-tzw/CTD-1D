@@ -5,7 +5,7 @@ class BoundingBox:
     """Stores information about the bounding box"""
 
     def __init__(self, x: int, y: int, width: int, height: int) -> None:
-        self._tolerance = 0.9
+        self._tolerance = 0.8
         self._delta_width = self._tolerance * width / 2
         self._delta_height = self._tolerance * height / 2
 
