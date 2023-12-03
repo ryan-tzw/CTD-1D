@@ -87,10 +87,10 @@ class CollisionManager:
         self._obstacles.append(obstacle)
 
     def unload_obstacle(self, obstacle: GameObject):
-        """Unloads an obstacle from the game using its UUID.
+        """Unloads an obstacle from the game.
 
         Args:
-            target_uuid (UUID): The UUID of the obstacle to be unloaded.
+            obstacle (GameObject): The obstacle to be unloaded.
         """
         try:
             self._obstacles.remove(obstacle)

@@ -19,10 +19,10 @@ class GameManager:
         self._game_objects.sort(key=lambda obj: obj.render_priority)
 
     def unload_game_object(self, game_object: GameObject):
-        """Removes a GameObject from the list of loaded GameObjects
+        """Removes a GameObject from the list of GameObjects to be rendered
 
         Args:
-            target_uuid (_type_): UUID of the GameObject to remove
+            game_object (GameObject): GameObject to be removed
         """
         try:
             self._game_objects.remove(game_object)

@@ -27,10 +27,10 @@ class SpawnManager:
         # If the countdown reaches 0, spawn a new obstacle
         if self.countdown <= 0:
             # Spawn a random number of obstacles
-            for _ in range(randint(1, 5)):
+            for _ in range(randint(1, 4)):
                 self.spawn_obstacle()
 
-            self.countdown = randint(30, 40) / difficulty.get_global_speed_modifier()
+            self.countdown = randint(30, 50) / difficulty.get_global_speed_modifier()
 
         # Check if any obstacles have gone off the screen and remove them
         for obstacle in self._obstacles:
@@ -57,14 +57,14 @@ class SpawnManager:
         Args:
             target_obstacle (Obstacle): Obstacle to unload
         """
-        self._obstacles.remove(target_obstacle)
         self._collision_manager.unload_obstacle(target_obstacle)
         self._game_manager.unload_game_object(target_obstacle)
+        self._obstacles.remove(target_obstacle)
 
     def reset(self):
-        """Resets the spawn manager"""
+        """Removes all obstacles from the game and resets the countdown"""
         # Unload all obstacles
-        for obstacle in self._obstacles:
+        for obstacle in list(self._obstacles):
             self.unload_obstacle(obstacle)
         # Reset countdown
         self.countdown = 75
