@@ -1,6 +1,6 @@
 # CTD-1D Game Project: Fablab Adventures 
 
-Fablab Adventures is a 2 dimensional game made with the Turtle Library. They will use the arrow keys/WASD to move and avoid approaching Fablab staff who will scold the player for violating Fablab rules. Upon colliding with the Fablab staff, the player gets sent out of the Fablab and loses. They will also have to collect items that would help them adhere to the rules. The objective of the game is to collect all items while successfully dodging the FabLab staff.
+Fablab Adventures is a 2 dimensional game made with the Turtle Library. They will use the arrow keys/WASD to move and avoid approaching Fablab staff who will scold the player for violating Fablab rules. Upon colliding with the Fablab staff, the player gets sent out of the Fablab and loses. The objective of the game is to successfully dodge the FabLab staff for as long as possible.
 
 Libraries used:
 - Turtle
@@ -19,7 +19,7 @@ Run main.py
 ## Fablab Adventure Features 
 
 ###### Movement
-Players move their sprit using WASD or the arrow keys on a keyboard. 
+Players move their sprite using WASD or the arrow keys on a keyboard. 
 
 ###### Random spawning of objects 
 Fablab staff randomly spawn at the top of the screen, making it hard for the player to predict where to be to dodge. 
